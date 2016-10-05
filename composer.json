@@ -1,0 +1,6 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^5.2",
+        "smarty/smarty": "^3.1"
+    }
+}
