@@ -8,30 +8,30 @@ $smarty = new Smarty();
 $smarty->setTemplateDir('templates');
 
 $mail->CharSet = 'UTF-8';
-$mail->setFrom(Config::MAIL_FROM, Config::MAIL_FROM_NAME);
+$mail->setFrom(Config::get('MAIL_FROM'), Config::get('MAIL_FROM_NAME'));
 
-$addresses = explode(',', Config::MAIL_TO);
+$addresses = explode(',', Config::get('MAIL_TO'));
 
 foreach ($addresses as $address) {
     $mail->addAddress($address);
 }
 
-if (defined('Config::MAIL_SMTP') && Config::MAIL_SMTP) {
+if (Config::get('MAIL_SMTP')) {
     $mail->isSMTP();
 }
-if (defined('Config::MAIL_HOST') && !empty(Config::MAIL_HOST)) {
+if (Config::get('AIL_HOST')) {
     $mail->Host = Config::MAIL_HOST;
 }
-if (defined('Config::MAIL_SMTP_PORT') && !empty(Config::MAIL_SMTP_PORT)) {
+if (Config::get('MAIL_SMTP_PORT')) {
     $mail->Port = Config::MAIL_SMTP_PORT;
 }
-if (defined('Config::MAIL_USERNAME') && !empty(Config::MAIL_USERNAME)) {
+if (Config::get('MAIL_USERNAME')) {
     $mail->Username = Config::MAIL_USERNAME;
 }
-if (defined('Config::MAIL_PASSWORD') && !empty(Config::MAIL_PASSWORD)) {
+if (Config::get('MAIL_PASSWORD')) {
     $mail->Password = Config::MAIL_PASSWORD;
 }
-if (defined('Config::MAIL_SMTPSECURE') && !empty(Config::MAIL_SMTPSECURE)) {
+if (Config::get('MAIL_SMTPSECURE')) {
     $mail->SMTPSecure = Config::MAIL_SMTPSECURE;
 }
 
