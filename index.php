@@ -63,7 +63,7 @@ try {
         )
     );
 
-    $mail->Body    = $view->fetch();
+    $mail->Body = $view->fetch();
 
     if (!$mail->send()) {
         echo 'Message could not be sent.';
@@ -133,6 +133,8 @@ function getIssue($idIssue)
         'status'          => $redmineIssue['status']['name'],
         'lastUpdate'      => $redmineIssue['updated_on'],
         'lastUpdateText'  => time_elapsed_string($redmineIssue['updated_on']),
+        'project'         => $redmineIssue['project']['name'],
+        'projectId'       => $redmineIssue['project']['id'],
         'subject'         => $redmineIssue['subject'],
         'description'     => $redmineIssue['description'],
         'lastUpdateBy_id' => $lastUpdateBy_id,

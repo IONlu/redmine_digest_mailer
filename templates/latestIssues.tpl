@@ -3,6 +3,8 @@
         id
         status
         lastUpdate
+        project
+        projectId
         subject
         description
         lastUpdateBy_id
@@ -93,6 +95,9 @@
             tr:last-child {
                 border-bottom: none;
             }
+            .project {
+                color: #78909c;
+            }
         </style>
 
     </head>
@@ -104,7 +109,7 @@
             <div class="content">
 
                 <p>Dear Sir or Madam,</p>
-                <p>please find attached a list of open issues from the last {$issues_time_window}.</p>
+                <p>please find attached a list of <b>{$issues|count}</b> open issues from the last {$issues_time_window}.</p>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -118,7 +123,7 @@
                         <tr class="{if $key%2==0}dark{/if}">
                             <td class="id"><a href="{$redmine_url}/issues/{$issue.id}">{$issue.id}</a></td>
                             <td class="nowrap status-{$issue.status}">{$issue.status}</td>
-                            <td>{$issue.subject}</td>
+                            <td><a href="{$redmine_url}/projects/{$issue.projectId}"><span class="project">{$issue.project}</span></a> - <a href="{$redmine_url}/issues/{$issue.id}">{$issue.subject}</a></td>
                             <td class="nowrap">{$issue.lastUpdateBy}</td>
                             <td class="nowrap">{if $issue.assigned}{$issue.assigned}{else}<span class="unassigned">UNASSIGNED</span>{/if}</td>
                             <td class="nowrap">{$issue.lastUpdateText}</td>
