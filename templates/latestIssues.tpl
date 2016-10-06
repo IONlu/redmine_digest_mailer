@@ -95,8 +95,11 @@
             tr:last-child {
                 border-bottom: none;
             }
-            .project {
+            a.project {
                 color: #78909c;
+            }
+            a.subject {
+                color: #4F5052;
             }
         </style>
 
@@ -123,7 +126,7 @@
                         <tr class="{if $key%2==0}dark{/if}">
                             <td class="id"><a href="{$redmine_url}/issues/{$issue.id}">{$issue.id}</a></td>
                             <td class="nowrap status-{$issue.status}">{$issue.status}</td>
-                            <td><a href="{$redmine_url}/projects/{$issue.projectId}" class="project">{$issue.project}</a> - <a href="{$redmine_url}/issues/{$issue.id}">{$issue.subject}</a></td>
+                            <td><a href="{$redmine_url}/projects/{$issue.projectId}" class="project">{$issue.project}</a> - <a href="{$redmine_url}/issues/{$issue.id}" class="subject">{$issue.subject}</a></td>
                             <td class="nowrap">{$issue.lastUpdateBy}</td>
                             <td class="nowrap">{if $issue.assigned}{$issue.assigned}{else}<span class="unassigned">UNASSIGNED</span>{/if}</td>
                             <td class="nowrap">{$issue.lastUpdateText}</td>
