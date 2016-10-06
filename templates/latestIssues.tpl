@@ -117,7 +117,7 @@
                     {foreach from=$issues key=$key item=issue}
                         <tr class="{if $key%2==0}dark{/if}">
                             <td class="id"><a href="{$redmine_url}/issues/{$issue.id}">{$issue.id}</a></td>
-                            <td class="status-{$issue.status}">{$issue.status}</td>
+                            <td class="nowrap status-{$issue.status}">{$issue.status}</td>
                             <td>{$issue.subject}</td>
                             <td class="nowrap">{$issue.lastUpdateBy}</td>
                             <td class="nowrap">{if $issue.assigned}{$issue.assigned}{else}<span class="unassigned">UNASSIGNED</span>{/if}</td>
