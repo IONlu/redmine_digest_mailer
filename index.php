@@ -5,7 +5,7 @@ require_once __DIR__.'/config.php';
 
 $mail   = new PHPMailer();
 $smarty = new Smarty();
-$smarty->setTemplateDir('templates');
+$smarty->setTemplateDir(__DIR__.'/templates');
 
 $mail->CharSet = 'UTF-8';
 $mail->setFrom(Config::get('MAIL_FROM'), Config::get('MAIL_FROM_NAME'));
