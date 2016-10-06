@@ -8,12 +8,36 @@ $smarty = new Smarty();
 $smarty->setTemplateDir('templates');
 
 $mail->CharSet = 'UTF-8';
-$mail->setFrom(Config::EMAIL_FROM, Config::EMAIL_FROM_NAME);
-$mail->addAddress(Config::EMAIL_TO);
+$mail->setFrom(Config::MAIL_FROM, Config::MAIL_FROM_NAME);
+
+$addresses = explode(',', Config::MAIL_TO);
+
+foreach ($addresses as $address) {
+    $mail->addAddress($address);
+}
+
+if (defined('Config::MAIL_SMTP') && Config::MAIL_SMTP) {
+    $mail->isSMTP();
+}
+if (defined('Config::MAIL_HOST') && !empty(Config::MAIL_HOST)) {
+    $mail->Host = Config::MAIL_HOST;
+}
+if (defined('Config::MAIL_SMTP_PORT') && !empty(Config::MAIL_SMTP_PORT)) {
+    $mail->Port = Config::MAIL_SMTP_PORT;
+}
+if (defined('Config::MAIL_USERNAME') && !empty(Config::MAIL_USERNAME)) {
+    $mail->Username = Config::MAIL_USERNAME;
+}
+if (defined('Config::MAIL_PASSWORD') && !empty(Config::MAIL_PASSWORD)) {
+    $mail->Password = Config::MAIL_PASSWORD;
+}
+if (defined('Config::MAIL_SMTPSECURE') && !empty(Config::MAIL_SMTPSECURE)) {
+    $mail->SMTPSecure = Config::MAIL_SMTPSECURE;
+}
 
 $mail->isHTML(true);
 
-$mail->Subject = Config::EMAIL_SUBJECT;
+$mail->Subject = Config::MAIL_SUBJECT;
 
 try {
     // First, let's fetch who's to be excluded from these updates
