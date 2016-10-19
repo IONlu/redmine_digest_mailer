@@ -187,7 +187,7 @@ function getLatestIssues($startDate = null)
         $startDate = date('Y-m-d\TH:i:s\Z', strtotime('-'.Config::TIME_WINDOW));
     }
 
-    $latestIssues = getAllRows(Config::REDMINE_URL.'/issues.json?updated_on=>='.$startDate.'&sort=updated_on');
+    $latestIssues = getAllRows(Config::REDMINE_URL.'/issues.json?updated_on=>='.$startDate.'&sort=updated_on:desc');
 
     return $latestIssues;
 }
