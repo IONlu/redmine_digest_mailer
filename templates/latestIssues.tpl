@@ -111,8 +111,8 @@
         <div class="container">
             <div class="content">
 
-                <p>Dear Sir or Madam,</p>
-                <p>please find attached a list of <b>{$issues|count}</b> open issues from the last {$issues_time_window}.</p>
+                <p>Dear reader,</p>
+                <p>please find attached a list of <b>{$issues|count}</b> open issues.</p>
                 <table>
                     <tr>
                         <th>ID</th>
